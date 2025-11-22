@@ -77,27 +77,25 @@ def activate(req: ActivateReq):
     }
 
 @app.post("/deactivate")
+@app.post("/deactivate")
 def deactivate(req: DeactivateReq):
-
     doc_ref = db.collection("licenses").document(req.license)
     doc = doc_ref.get()
-
     if not doc.exists:
         raise HTTPException(status_code=404, detail="License not found")
-
     data = doc.to_dict()
-
     if data.get("hwid") != req.hwid:
         raise HTTPException(status_code=403, detail="HWID mismatch")
-
     doc_ref.update({"active": False, "hwid": ""})
-
     return {"status": "ok"}
 
 
-# =======================
-# RAILWAY STARTUP
-# =======================
+# ----------------------------------------
+#  FIX: Letakkan di luar fungsi!
+# ----------------------------------------
 if __name__ == "__main__":
-    port = int(os.environ.get("PORT", 3000))  # Railway uses this
+    import uvicorn
+    import os
+    port = int(os.environ.get("PORT", 3000))
     uvicorn.run("server:app", host="0.0.0.0", port=port)
+
