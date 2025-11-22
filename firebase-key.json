@@ -1,0 +1,13 @@
+{
+  "type": "service_account",
+  "project_id": "penghitungkendaraan",
+  "private_key_id": "7a367d2164b343a25e4b42373f11360addf7f950",
+  "private_key": "-----BEGIN PRIVATE KEY-----\nMIIEuwIBADANBgkqhkiG9w0BAQEFAASCBKUwggShAgEAAoIBAQCu4CzwPq6U6SH9\nr+1o90mIv3ppef6y26rXFPpqjZdmBcFdE7YkQw0QwGzhQ3elQXTGz3Yj87YhkcG/\nd4rqjfnG7RUEnOoZ0yGemCb3LzNkS9D1M6OGqCgsoLhp+0hi6Yvcw9htJCpLNTtr\n3UfrJBqh1tDN/mwO07hjYOoMonjzPNzqTp4ZHaYAhM+D3C2SNCBcHGpp7LavKO+s\nRvo98rk7ghVbHP6h3fNnZ7NbjGqiBBPSJ6mvPbVNGAiB6rUwuc8TcRC/E0zEidNr\nSMjp8t2rvnKgYlKJ+BHhfq2PvHEBz4+nINQ1ap2/o9XjTpCGdvcsCAwtwHHuP8ke\nBC9hVVj1AgMBAAECgf9Ej9aUr+ZCsp6Fl9KMCJi2n/pVQcVaF2pIOIasXm9n9RCO\ndqLROVQNp/YsyQbZlf3mkvxT/anbbS6ecfnXMwmfa0IAA9qsPzxTsaLqoiwxr5Qb\ny4GdoiVzci5hXuOj/HkHF/6tLUCw4G3631AG4+buqy6+iHhtlLMOjJ5bQ3yDlzxl\nryaUOIy/6zDNpdf+uvQXk/VzKhwf452QbM5p/SbFuPs3bG+BSNTjWziTmu3AnvM9\nQK5kD5Y02nELHVq6b+wLjcxk7H9eqGhTB8GWT8AEBjL0IEpLrhN4PLk62kyaH/eA\n+bNYMikwLguc0ieKjTihD7UpcXQd6f/WQNQykLkCgYEA1BkrHMJAB/CDj9n8vph7\nEWghWv2bkvLNFxaA0+ath/xylM7BGbS3DcEwOI65vjncWOXDm88SxnGrtCNnfRVG\nU9Q5ozLVVjR0xL4PTpIHEFbmOMhgg/QL3/FjhrJwvEMv4+tWFKzjn1zLe6PRjGX6\n4qSzeEIHtuOpzNRIzYx0wD0CgYEA0xKgFqq5lKn4eU4o9vn1jbiJ4oEbB7tErFeb\nPdvJG/5AMmUBuDr14YjzwzzigpBaKhvwoWIGXvpdh26NnxPvptWMySrQSmiTsoGZ\nGghQ2BDEXdn4n1N4iAiCYgGwn3QHy8YFMa0LyukoOMUBqfaK1fkNVa6MQZ0oOfR+\nQuUHDxkCgYBb/tauUKsJRo8p8/kmimjG8g2Vs+6o3FuMqhwSzTlzhFIGrW8gQTws\n4SCTR4TVN6+Vd4NSr4yLOn6pUbnvjSzF64Vcfg3+qB4FwBJPmBMsSSTueCs00MPd\nzIvIvtkbL2E0UL0zlpHca5lu9W1MomchqyKVBL7n2vOpfmJdlZCGWQKBgBB1+GQs\nJlLwun8DWHCCZ+MIjEBM30XIFf/2yRWW6WU0e98yP2MVvg07t/725ZdXGKEGEssT\nMPoBPoAMYCES1fLF3rfljd7vru0R7FW6Zkujax0CncAXK2Q4faqVBSg6TU1YARmx\nrCTD8C4VNx8BKiyrwp13AlsvnW5/ocUnxVgpAoGBAJp1gQzPLfCexQhCID2CPm2A\nv9k0m7zzHDpH5GzBwHLPaZ13jiRbHMi8lFmWa8BmYYPjPSecj1jVPzvyneLIaD38\na1lHlCNvl+fyOSgoRuUs3n+WR9zphuyuE0paisKEtI0MpZ10R9PjEHB29wtjQyvT\nrnHeJy1Yuj49ke1vLEcu\n-----END PRIVATE KEY-----\n",
+  "client_email": "firebase-adminsdk-fbsvc@penghitungkendaraan.iam.gserviceaccount.com",
+  "client_id": "108208320793413252994",
+  "auth_uri": "https://accounts.google.com/o/oauth2/auth",
+  "token_uri": "https://oauth2.googleapis.com/token",
+  "auth_provider_x509_cert_url": "https://www.googleapis.com/oauth2/v1/certs",
+  "client_x509_cert_url": "https://www.googleapis.com/robot/v1/metadata/x509/firebase-adminsdk-fbsvc%40penghitungkendaraan.iam.gserviceaccount.com",
+  "universe_domain": "googleapis.com"
+}
