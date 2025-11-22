@@ -5,33 +5,41 @@ from firebase_admin import credentials, firestore
 from jose import jwt
 import time
 import os
-import uvicorn  # penting untuk Railway!
+import uvicorn
 
-# CONFIG - put firebase-key.json and RSA private key in same folder
+# ========================
+# CONFIG
+# ========================
 FIREBASE_KEYFILE = "firebase-key.json"
 JWT_PRIVATE_KEY_FILE = "privkey.pem"
 JWT_PUBLIC_KEY_FILE = "pubkey.pem"
 ALG = "RS256"
 
+# ========================
 # Load Firebase
+# ========================
 if not os.path.exists(FIREBASE_KEYFILE):
-    raise RuntimeError("Missing firebase-key.json - place service account JSON in server folder")
+    raise RuntimeError("Missing firebase-key.json in server folder")
 
 cred = credentials.Certificate(FIREBASE_KEYFILE)
 firebase_admin.initialize_app(cred)
 db = firestore.client()
 
+# ========================
 # Load RSA keys
+# ========================
 with open(JWT_PRIVATE_KEY_FILE, "rb") as f:
     PRIVATE_KEY = f.read()
+
 with open(JWT_PUBLIC_KEY_FILE, "rb") as f:
     PUBLIC_KEY = f.read()
 
+# ========================
+# FastAPI App
+# ========================
 app = FastAPI(title="License Activation Server")
 
-# =======================
-# MODELS
-# =======================
+# Request body models
 class ActivateReq(BaseModel):
     license: str
     hwid: str
@@ -40,9 +48,10 @@ class DeactivateReq(BaseModel):
     license: str
     hwid: str
 
-# =======================
-# ENDPOINTS
-# =======================
+
+# ========================
+# ACTIVATE ENDPOINT
+# ========================
 @app.post("/activate")
 def activate(req: ActivateReq):
 
@@ -56,9 +65,12 @@ def activate(req: ActivateReq):
 
     # FIRST ACTIVATION
     if not data.get("active", False):
-        doc_ref.update({"active": True, "hwid": req.hwid})
+        doc_ref.update({
+            "active": True,
+            "hwid": req.hwid
+        })
     else:
-        # Already activated by other device
+        # Already activated before
         if data.get("hwid") != req.hwid:
             raise HTTPException(status_code=403, detail="License already used on another device")
 
@@ -76,26 +88,35 @@ def activate(req: ActivateReq):
         "public_key": PUBLIC_KEY.decode()
     }
 
-@app.post("/deactivate")
+
+# ========================
+# DEACTIVATE ENDPOINT
+# ========================
 @app.post("/deactivate")
 def deactivate(req: DeactivateReq):
+
     doc_ref = db.collection("licenses").document(req.license)
     doc = doc_ref.get()
+
     if not doc.exists:
         raise HTTPException(status_code=404, detail="License not found")
+
     data = doc.to_dict()
+
     if data.get("hwid") != req.hwid:
         raise HTTPException(status_code=403, detail="HWID mismatch")
-    doc_ref.update({"active": False, "hwid": ""})
+
+    doc_ref.update({
+        "active": False,
+        "hwid": ""
+    })
+
     return {"status": "ok"}
 
 
-# ----------------------------------------
-#  FIX: Letakkan di luar fungsi!
-# ----------------------------------------
+# ========================
+# RUN ON RAILWAY
+# ========================
 if __name__ == "__main__":
-    import uvicorn
-    import os
-    port = int(os.environ.get("PORT", 3000))
+    port = int(os.environ.get("PORT", 3000))  # Railway injects PORT
     uvicorn.run("server:app", host="0.0.0.0", port=port)
-
